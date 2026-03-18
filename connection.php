@@ -10,8 +10,5 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     exit('Connection failed: ' . $conn->connect_error);
-}else{
-    echo 'Connected successfully';
-    // echo '<script>alert("Invalid username or password")</script>';
 }
 ?>

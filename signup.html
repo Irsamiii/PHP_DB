@@ -3,24 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green:      #1e3a5f;
+            --green-dark: #132840;
+            --green-soft: #f0f4f8;
+            --border:     #e2e8f0;
+            --text:       #1a1a1a;
+            --muted:      #94a3b8;
+            --radius:     10px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 28px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            animation: fadeUp 0.5s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+        h2 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .row {
+            display: flex;
+            gap: 14px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 7px;
+            flex: 1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 7px 12px;
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(30,58,95,0.12);
+        }
+
+        /* Gender */
+        .gender-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .radio-option { flex: 1; position: relative; }
+
+        .radio-option input[type="radio"] {
+            position: absolute; opacity: 0; width: 0; height: 0;
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.15s;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: var(--green);
+            color: var(--green-dark);
+            background: var(--green-soft);
+        }
+
+        .radio-option label:hover {
+            border-color: var(--green);
+            color: var(--text);
+        }
+
+        /* Submit */
+        input[type="submit"] {
+            width: 100%;
+            padding: 9px;
+            background: var(--green);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        input[type="submit"]:hover {
+            background: var(--green-dark);
+            transform: translateY(-1px);
+        }
+
+        input[type="submit"]:active { transform: translateY(0); }
+
+        .login-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .login-link a {
+            color: var(--green-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-link a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-    <h1>Signup</h1>
-    <form action="create.php" method="post">
-        <label for="fname">First Name</label><br>
-        <input type="text" name="fname"><br>
-        <label for="lname">Last Name</label><br>
-        <input type="text" name="lname"><br>
-        <label for="email">Email</label><br>
-        <input type="email" name="email"><br>
-        <label for="password">Password</label><br>
-        <input type="password" name="password"><br>
-        <label for="gender">Gender</label><br>
-        <input type="radio" name="gender" value="male"> Male
-        <input type="radio" name="gender" value="female"> Female <br><br>
-        <input type="submit" name="submit" value="Submit">
 
+<div class="card">
+
+    <h2>Create an account</h2>
+    <p class="subtitle">Sign up to get started today</p>
+
+    <form action="create.php" method="post">
+
+        <div class="row">
+            <div class="field">
+                <label for="fname">First Name</label>
+                <input type="text" name="fname" id="fname" required>
+            </div>
+            <div class="field">
+                <label for="lname">Last Name</label>
+                <input type="text" name="lname" id="lname" required>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+
+        <span class="gender-label">Gender</span>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" name="gender" id="male" value="male" required>
+                <label for="male">Male</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" name="gender" id="female" value="female">
+                <label for="female">Female</label>
+            </div>
+        </div>
+
+        <input type="submit" name="submit" value="Sign Up">
     </form>
+
+    <p class="login-link">Already have an account? <a href="login.php">Log in</a></p>
+
+</div>
+
 </body>
 </html>
