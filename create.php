@@ -12,8 +12,20 @@ if (isset($_POST['submit'])){
     $stmt->bind_param("ssssss", $first_name, $last_name, $email, $password, $gender, $role);
 
     if ($stmt->execute()) {
-        echo "<p>Account created successfully! <a href='login.php'>Login here</a></p>";
-    } else {
+
+    // get the new user id
+    $user_id = $stmt->insert_id;
+
+    // start session
+    session_start();
+    $_SESSION['user_id'] = $user_id;
+    $_SESSION['role'] = $role;
+    $_SESSION['fname'] = $first_name;
+
+    // redirect to dashboard
+    header("Location: dashboard.php");
+    exit();
+} else {
         echo "Error: " . $stmt->error;
     }
 

@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy:      #1e3a5f;
-            --navy-dark: #132840;
-            --navy-soft: #f0f4f8;
+            --navy:      #123c1d;
+            --navy-dark: #0d2a14;
+            --navy-soft: #e8f0e8;
             --border:    #e2e8f0;
             --text:      #1a1a1a;
             --muted:     #94a3b8;

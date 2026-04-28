@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if ($_SESSION['role'] != 'admin') {
+    die("Access denied!");
+}
+
 // Only admins with delete role
 if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['delete', 'admin'])) {
     header("Location: login.php");

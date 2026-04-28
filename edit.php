@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if ($_SESSION['role'] != 'admin') {
+    die("Access denied!");
+}
+
 // Only admins with edit role
 if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['edit', 'admin'])) {
     header("Location: login.php");
@@ -56,7 +60,7 @@ if (!$user) { header("Location: dashboard.php"); exit(); }
         .radio-group { margin-bottom: 16px; }
         .radio-group label { display: inline; margin-right: 12px; }
         .btn { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
-        .btn-save   { background: #3498db; color: white; }
+        .btn-save   { background: #123c1d; color: white; }
         .btn-cancel { background: #aaa; color: white; text-decoration: none; display: inline-block; margin-left: 10px; }
         .error { color: red; margin-bottom: 12px; font-size: 13px; }
     </style>

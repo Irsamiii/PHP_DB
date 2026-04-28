@@ -18,15 +18,15 @@ if (isset($_POST['submit'])) {
 
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id']   = $user['id'];
-            $_SESSION['user_name'] = $user['fname'];
+            $_SESSION['username'] = $user['fname'];
             $_SESSION['role']      = $user['role'];
 
             ob_end_clean();
-            if (in_array($user['role'], ['edit', 'delete', 'admin'])) {
-        header("Location: dashboard.php");
-            } else {
-        header("Location: profile.php"); // regular users go here
-    }
+           if ($user['role'] == 'admin') {
+    header("Location: dashboard.php"); // admin dashboard
+} else {
+    header("Location: dashboard.php"); // user dashboard (same page, different view)
+}
             exit();
         }
     }

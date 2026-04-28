@@ -27,24 +27,46 @@ $user = $stmt->get_result()->fetch_assoc();
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: Arial, sans-serif; background: #f0f2f5; }
 
-        .navbar {
-            background: #2c3e50; color: white;
-            padding: 16px 24px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .navbar h1 { font-size: 20px; }
-        .navbar a { color: #e74c3c; text-decoration: none; font-size: 14px; }
-        .navbar a:hover { text-decoration: underline; }
+        .sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #2c3e50;
+    color: white;
+    position: fixed;
+    padding: 20px;
+    top: 0;
+    left: 0;
+}
 
-        .container {
-            display: flex; justify-content: center;
-            padding: 50px 20px;
-        }
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
 
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background: #34495e;
+}
+
+.main {
+    margin-left: 240px;
+    padding: 30px;
+}
+        
         .card {
             background: white; border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 36px; width: 100%; max-width: 480px;
+            align-self: center; margin: 0 auto;
         }
 
         .avatar {
@@ -60,7 +82,7 @@ $user = $stmt->get_result()->fetch_assoc();
             text-align: center; margin-bottom: 24px;
         }
         .role-badge span {
-            background: #eaf4ff; color: #3498db;
+            background: #eaf4ff; color: #123c1d;
             padding: 4px 12px; border-radius: 20px; font-size: 13px;
         }
 
@@ -75,13 +97,15 @@ $user = $stmt->get_result()->fetch_assoc();
     </style>
 </head>
 <body>
+<div class="sidebar">
+    <h2>Connect</h2>
 
-<div class="navbar">
-    <h1>My Profile</h1>
+    <a href="dashboard.php">Home</a>
+    <a href="profile.php">Profile</a>
     <a href="logout.php">Logout</a>
 </div>
 
-<div class="container">
+<div class="main">
     <div class="card">
 
         <div class="avatar">
