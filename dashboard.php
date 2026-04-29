@@ -13,9 +13,13 @@ $result = mysqli_query($conn, "SELECT * FROM users");
 $i = 1;
 $totalUsers = mysqli_num_rows($result);
 ?>
-
-<link rel="stylesheet" href="style.css">
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 <div class="sidebar">
     <h2>Connect</h2>
     <a href="#">Home</a>
@@ -26,7 +30,7 @@ $totalUsers = mysqli_num_rows($result);
 <div class="main">
 
     <div class="card">
-        <h2>Welcome, <?php echo $_SESSION['fname']; ?></h2>
+        <h2>Welcome, <?php echo $_SESSION['username']; ?></h2>
     </div>
 
     <div class="card">
@@ -34,6 +38,11 @@ $totalUsers = mysqli_num_rows($result);
     </div>
 
     <div class="card">
+        <?php if ($role == 'admin') { ?>
+    <a href="create_user.php">
+        <button class="btn btn-create"> + Add User</button>
+    </a>
+<?php } ?>
         <h3>Users List</h3>
 
         <table>
@@ -69,3 +78,5 @@ $totalUsers = mysqli_num_rows($result);
     </div>
 
 </div>
+</body>
+</html>
